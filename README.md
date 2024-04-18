@@ -48,11 +48,46 @@ window.__gpp_addFrame=function(e){if(!window.frames[e])if(document.body){var t=d
 
 ### Client configuration script
 
+The client configuration script contains your organization's specific account configuration parameters. This configuration includes the necessary and optional parameters for your property to communicate with the Sourcepoint messaging platform and consent service libraries. The majority of customizations made to your implementation will be implemented in this script.
+
+The following properties are **required** in the `config` object of the script to successfully surface messages set up in the Sourcepoint portal:
+
+| **Property**       | **Data Type** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------------ | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `accountId`        | Number        | Value associates the property with your organization's Sourcepoint account. Your organization's accountId can be retrieved by contacting your Sourcepoint Account Manager or via the **My Account** page in your Sourcepoint account.                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| `baseEndpoint`     | String        | A single server endpoint that serves the messaging experience.<br><br>For GDPR TCF, U.S. Multi-State Privacy, U.S. Privacy (Legacy), GDPR Standard, and Custom Messaging, the baseEndpoint is https://cdn.privacy-mgmt.com.<br><br>**Note**: The baseEndpoint can also be changed to a CNAME first-party subdomain in order to persist first-party cookies on Safari web browser (due to Safari’s ITP) by setting cookies through the server with set-cookie rather than using document.cookie on the page.                                                                                                                                                                                                     |
+| `propertyHref`     | String        | Maps the implementation to a specific URL as set up in the Sourcepoint account dashboard. Use `propertyHref` to spoof messaging campaigns onto a local environment for testing or debugging.<br><br>**Note**: When a campaign is ready to launch publicly to your end-users, we recommend that you replace `propertyHref` with the more efficient `propertyId` parameter                                                                                                                                                                                                                                                                                                                                        |
+| `propertyId`       | Number        | Maps the message to a specific property set up in the Sourcepoint portal. Use `propertyId` instead of `propertyHref` when launching your campaign to end-users publicly.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| campaign object(s) | Object        | Campaigns are surfaced on yout HTML5 device by adding campaign objects to your client configuration script.<br><br>The following Sourcepoint campaigns are supported via our HTML5 OTT solution:<br><br>`gdpr: {}` - GDPR TCF or GDPR Standard campaigns<br>`ccpa: {}` - U.S. Privacy (Legacy) campaigns<br><br>U.S. Multi-State Privacy campaigns are currently not supported for HTML5 OTT devices. If your organization needs to support the Global Privacy Platform (GPP) Multi-State Privacy (MSPS) framework, you will need to configure a U.S. Privacy (Legacy) campaign to do so. [<br>Click here<br>](<br>#us-multi-state-privacy-campaign-support<br>) for more information about this configuration. |
+
+```javascript
+<script type="text/javascript">
+  window._sp_queue = [];
+  window._sp_ = {
+      config: {
+          accountId: 22,
+          baseEndpoint: 'https://cdn.privacy-mgmt.com',
+          propertyHref: 'http://tizenapp',
+          gdpr: { },
+          ccpa: { }
+      }
+}
+</script>
+```
+
 ### URL to messaging library
+
+The final script in the implementation is a URL that points to Sourcepoint's messaging libraries. This script only needs to be included once regardless of how many different types of messaging campaigns you run on the property.
+
+```javascript
+<script src="https://cdn.privacy-mgmt.com/unified/wrapperMessagingWithoutDetection.js"></script>
+```
+
+> If your organization has edited the baseEndpoint with a `CNAME DNS` record you will also need to edit the URL. Please follow the following format if necessary: `https://cname.subdomain/unified/wrapperMessagingWithoutDetection.js`
 
 ## Supported campaigns
 
-Campaign are surfaced on yout HTML5 device by adding campaign objects to your configuration
+Campaigns are surfaced on yout HTML5 device by adding campaign objects to your client configuration script.
 
 The following Sourcepoint campaigns are supported via our HTML5 OTT solution:
 
