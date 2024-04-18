@@ -5,7 +5,6 @@ Sourcepoint's HTML5 OTT solution allows you to surface a Sourcepoint CMP message
 # Table of Contents
 
 - [Implementation overview](#implementation-overview)
-- [Supported campaigns](#supported-campaigns)
 - [Resurface OTT message](#resurface-ott-message)
 - [Global Privacy Platform (GPP) Multi-State Privacy (MSPS) support](#global-privacy-platform-gpp-multi-state-privacy-msps-support)
 - [APIs](#apis)
@@ -84,19 +83,6 @@ The final script in the implementation is a URL that points to Sourcepoint's mes
 ```
 
 > If your organization has edited the baseEndpoint with a `CNAME DNS` record you will also need to edit the URL. Please follow the following format if necessary: `https://cname.subdomain/unified/wrapperMessagingWithoutDetection.js`
-
-## Supported campaigns
-
-Campaigns are surfaced on yout HTML5 device by adding campaign objects to your client configuration script.
-
-The following Sourcepoint campaigns are supported via our HTML5 OTT solution:
-
-| **Config object** | **Campaign**              |
-| ----------------- | ------------------------- |
-| `gdpr: {}`        | GDPR TCF or GDPR Standard |
-| `ccpa: {}`        | U.S. Privacy (Legacy)     |
-
-> U.S. Multi-State Privacy campaigns are currently not supported for HTML5 OTT devices. If your organization needs to support the Global Privacy Platform (GPP) Multi-State Privacy (MSPS) framework, you will need to configure a U.S. Privacy (Legacy) campaign to do so. [Click here](#us-multi-state-privacy-campaign-support) for more information about this configuration.
 
 ## Resurface OTT message
 
