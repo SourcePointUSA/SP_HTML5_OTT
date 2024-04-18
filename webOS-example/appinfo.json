@@ -1,0 +1,11 @@
+{
+    "vendor": "Sourcepoint",
+    "largeIcon": "largeIcon.png",
+    "icon": "icon.png",
+    "main": "index.html",
+    "id": "com.sourcepoint.app",
+    "title": "SourcepointCMP",
+    "type": "web",
+    "version": "0.0.3",
+    "disableBackHistoryAPI": true
+}
