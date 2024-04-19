@@ -5,6 +5,7 @@ Sourcepoint's HTML5 OTT solution allows you to surface a Sourcepoint CMP message
 # Table of Contents
 
 - [Implementation overview](#implementation-overview)
+- [Optional configuration parameters](#optional-configuration-parameters)
 - [Resurface OTT message](#resurface-ott-message)
 - [Global Privacy Platform (GPP) Multi-State Privacy (MSPS) support](#global-privacy-platform-gpp-multi-state-privacy-msps-support)
 - [APIs](#apis)
@@ -83,6 +84,80 @@ The final script in the implementation is a URL that points to Sourcepoint's mes
 ```
 
 > If your organization has edited the baseEndpoint with a `CNAME DNS` record you will also need to edit the URL. Please follow the following format if necessary: `https://cname.subdomain/unified/wrapperMessagingWithoutDetection.js`
+
+## Optional configuration parameters
+
+Optional configuration parameters are added to your client configuration script and allows your organization to customize the implementation to suit its needs. Certain parameters are implemented for your entire implementation while others are implemented on a per campaign type basis. Review the tables below for more information:
+
+### Overall optional client configuration parameters
+
+The following parameters can be added to your client configuration script to impact your entire implementation:
+
+```javascript
+//Example
+<script type="text/javascript">
+    window._sp_queue = [];
+    window._sp_ = {
+        config: {
+            accountId: 1584,
+            baseEndpoint: 'https://cdn.privacy-mgmt.com',
+            propertyHref: 'https://www.testdemo.com',
+            gdpr: { },
+            authCookie: 'test_uuid',
+            campaignEnv: 'stage',
+            isSPA: true,
+            joinHref: true,
+            targetingParams:{
+                darkmode: true
+            }
+</script>
+```
+
+### GDPR campaign client configuration parameters
+
+The following parameters can be added to the `gdpr: {}` object in your client configuration script to impact your entire implementation:
+
+```javascript
+//Example
+<script type="text/javascript">
+window._sp_queue = [];
+window._sp_ = {
+    config: {
+        accountId: 1584,
+        baseEndpoint: 'https://cdn.privacy-mgmt.com',
+        propertyHref: 'https://www.demotest.com',
+        gdpr: {
+            groupPmId: 123456,
+            consentLanguage: "fi",
+            targetingParams:{
+                darkmode: false
+              },
+            shortCircuitPartialConsent: true
+        }
+</script>
+```
+
+### U.S. Privacy (Legacy) client configuration parameters
+
+The following parameters can be added to the `ccpa: {}` object in your client configuration script to impact your entire implementation:
+
+```javascript
+//Example
+<script type="text/javascript">
+window._sp_queue = [];
+window._sp_ = {
+    config: {
+        accountId: 1584,
+        baseEndpoint: 'https://cdn.privacy-mgmt.com',
+        ccpa: {
+            alwaysDisplayDNS: false,
+            targetingParams:{
+                darkmode: true
+              }
+        },
+        propertyHref: 'https://www.testdemo.com'
+</script>
+```
 
 ## Resurface OTT message
 
