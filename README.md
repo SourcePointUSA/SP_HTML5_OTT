@@ -141,6 +141,11 @@ window._sp_ = {
 
 The following parameters can be added to the `ccpa: {}` object in your client configuration script to impact your entire implementation:
 
+| **Optional Parameter** | **Data Type** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ---------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `alwaysDisplayDNS`     | Boolean       | Setting this parameter to `true` enables use cases where a Sourcepoint Do Not Sell (my data) notification is hardcoded.                                                                                                                                                                                                                                                                                                       |
+| `targetingParams`      | Object        | Targeting params allow a developer to set arbitrary key/value pairs. These key/value pairs are sent to Sourcepoint servers where they can be used to take a decision within the scenario builder. [Click here](https://docs.sourcepoint.com/hc/en-us/articles/4404822445587-Key-value-pair-targeting) to learn more.<br><br>**Note**: `targetingParams` set within the `ccpa` object will override overall `targetingParams`. |
+
 ```javascript
 //Example
 <script type="text/javascript">
