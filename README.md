@@ -113,9 +113,16 @@ The following parameters can be added to your client configuration script to imp
 </script>
 ```
 
-### GDPR campaign client configuration parameters
+### GDPR campaign optional client configuration parameters
 
 The following parameters can be added to the `gdpr: {}` object in your client configuration script to impact your entire implementation:
+
+| **Optional Parameter**       | **Data Type** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                               |
+| ---------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `consentLanguage`            | String        | Ensure that the purposes or stack names listed in a consent message remain in the same language regardless of an end-user's browser language setting. [Click here](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) for a list of ISO 639-1 language codes.<br><br>If this parameter is absent, the stacks and purposes will appear according the user's preferred language.                                     |
+| `groupPmId`                  | Number        | Allows your organization to use the privacy manager ID for the property group's privacy manager.<br><br>**Note**: Call `window._sp_.gdpr.loadPrivacyManagerModal()` without passing a parameter and the privacy manager that displays will be that property's version of the `groupPmId` privacy manager.                                                                                                                     |
+| `shortCircuitPartialConsent` | Boolean       | When set to `true` will eliminate an extra network call when the end-user has at least partial consent.<br><br>**Note**: When this parameter is set to `true`, an end-user will not receive a new message until their consent expires. Re-consent scenario steps will not be possible.                                                                                                                                        |
+| `targetingParams`            | Object        | Targeting params allow a developer to set arbitrary key/value pairs. These key/value pairs are sent to Sourcepoint servers where they can be used to take a decision within the scenario builder. [Click here](https://docs.sourcepoint.com/hc/en-us/articles/4404822445587-Key-value-pair-targeting) to learn more.<br><br>**Note**: `targetingParams` set within the `ccpa` object will override overall `targetingParams`. |
 
 ```javascript
 //Example
@@ -137,7 +144,7 @@ window._sp_ = {
 </script>
 ```
 
-### U.S. Privacy (Legacy) client configuration parameters
+### U.S. Privacy (Legacy) optional client configuration parameters
 
 The following parameters can be added to the `ccpa: {}` object in your client configuration script to impact your entire implementation:
 
