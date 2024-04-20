@@ -7,6 +7,7 @@ Sourcepoint's HTML5 OTT solution allows you to surface a Sourcepoint CMP message
 - [Implementation overview](#implementation-overview)
 - [Optional configuration parameters](#optional-configuration-parameters)
 - [Resurface OTT message](#resurface-ott-message)
+- Single page application
 - [Global Privacy Platform (GPP) Multi-State Privacy (MSPS) support](#global-privacy-platform-gpp-multi-state-privacy-msps-support)
 - [APIs](#apis)
 
@@ -92,6 +93,15 @@ Optional configuration parameters are added to your client configuration script 
 ### Overall optional client configuration parameters
 
 The following parameters can be added to your client configuration script to impact your entire implementation:
+
+| **Optional Parameter** | **Data Type** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| ---------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `authId`               |               | Allows your organization to pass a consent identifier to Sourcepoint to be used with authenticated consent. [Click here](https://docs.sourcepoint.com/hc/en-us/articles/4403274791699-Authenticated-consent) to learn more.                                                                                                                                                                                                                  |
+| `authCookie`           | String        | Allows your organization to configure a unique name for Sourcepoint's `authId` cookie. [Click here](https://docs.sourcepoint.com/hc/en-us/articles/4403274791699-Authenticated-consent) for more information on `authId`.                                                                                                                                                                                                                    |
+| `campaignEnv`          | String        | Designates which campaign environment to use and accepts either `stage` or `prod`.<br><br>When set to `stage`, the implementation will default to campaigns configured in your stage campaign environment. When set to `prod`, the implementation will default to campaigns configured in your public campaign environment.<br><br>**Note**: This parameter defaults to your `prod` campaign environment unless otherwise indicated.         |
+| `isSPA`                | Boolean       | When set to `true`, will confirm the implementation for a single page application and will show a message only when `window._sp_.executeMessaging();` is triggered.<br><br>[Click here](#single-page-application) to learn more about single page application functions.                                                                                                                                                                     |
+| `joinHref`             | Boolean       | When set to `true`, will ensure that all directory regular expression functionality works in conjunction with the propertyHref parameter.<br><br>The `joinHref` parameter is solely used to test your implementation across different servers while still allowing for URL RegEx matching. For these reasons, Sourcepoint strongly recommends that `joinHref` is set to `true` to ensure full CMP functionality.                             |
+| `targetingParams`      | Object        | Targeting params allow a developer to set arbitrary key/value pairs. These key/value pairs are sent to Sourcepoint servers where they can be used to take a decision within the scenario builder. [Click here](https://docs.sourcepoint.com/hc/en-us/articles/4404822445587-Key-value-pair-targeting) to learn more.<br><br>**Note**: `targetingParams`set within the U.S. Privacy (Legacy) or GDPR object will override this configuration. |
 
 ```javascript
 //Example
@@ -194,6 +204,8 @@ Attach the `loadNativeOtt` function to an event handler on your project. Most or
 //U.S. Privacy (Legacy)
 <button onclick="window._sp_.ccpa.loadNativeOtt(987654)">OTT USP Legacy</button>
 ```
+
+## Single page application
 
 ## Global Privacy Platform (GPP) Multi-State Privacy (MSPS) support
 
