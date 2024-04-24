@@ -7,7 +7,7 @@ Sourcepoint's HTML5 OTT solution allows you to surface a Sourcepoint CMP message
 - [Implementation overview](#implementation-overview)
 - [Optional configuration parameters](#optional-configuration-parameters)
 - [Resurface OTT message](#resurface-ott-message)
-- Single page application
+- [Single page application](#single-page-application)
 - [Global Privacy Platform (GPP) Multi-State Privacy (MSPS) support](#global-privacy-platform-gpp-multi-state-privacy-msps-support)
 - [APIs](#apis)
 
@@ -206,6 +206,28 @@ Attach the `loadNativeOtt` function to an event handler on your project. Most or
 ```
 
 ## Single page application
+
+When implementing a single page application, you should include the `isSPA` parameter in your client configuration script and set the value to `true`.
+
+```javascript
+//Example
+window._sp_queue = [];
+window._sp_ = {
+    config: {
+        accountId: 1584,
+        baseEndpoint: 'https://cdn.privacy-mgmt.com',
+        gdpr: { },
+        propertyHref: 'https://www.testdemo.com',
+        isSPA: true
+...
+```
+
+Including the `isSPA` parameter will confirm the implementation for a single page application and enable the use of the following functions:
+
+| **Function**                      | **Description**                                                                                                                                                                                                                                             |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `window._sp_.executeMessaging();` | Trigger the function in order to surface a message on a single page application. This function should be called on each (virtual) pageload.<br><br>**Note**: A message will only surface if your configured scenario dictates that a message should appear. |
+| `window._sp_.destroyMessages();`  | Trigger the function to dismiss all messages.                                                                                                                                                                                                               |
 
 ## Global Privacy Platform (GPP) Multi-State Privacy (MSPS) support
 
