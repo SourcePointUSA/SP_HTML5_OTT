@@ -186,6 +186,17 @@ window._sp_ = {
 
 Sourcepoint provides 10 different event callbacks that can be utilized by your organization to execute custom code in response to key events (e.g. when an end user clicks the cancel button).
 
+- `onMessageReady`
+- `onMessageChoiceSelect`
+- `onPrivacyManagerAction`
+- `onPrivacyManagerActionStatus`
+- `onMessageChoiceError`
+- `onConsentReady`
+- `onPMCancel`
+- `onMessageReceiveData`
+- `onSPPMObjectReady`
+- `onError`
+
 [Click here](https://docs.sourcepoint.com/hc/en-us/articles/4405397484307-Event-callbacks) to find comprehensive information on these event callbacks.
 
 ## Resurface OTT message
