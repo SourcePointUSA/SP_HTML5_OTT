@@ -25,7 +25,7 @@ The first part implementation script(s) contains the IAB stub functions. The stu
 
 This makes it available on queue to be called and released when needed. It is important to have these stub file(s) in the first position to avoid errors and failure of service.
 
-> Note: There is no stub file when configuring a GDPR Standard campaign for your project.
+> :notebook: Note: There is no stub file when configuring a GDPR Standard campaign for your project.
 
 ```javascript
 // GDPR TCF stub file. Example only. Please use stub file generated in Sourcepoint portal as it may have changed.
