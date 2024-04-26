@@ -11,6 +11,7 @@ Sourcepoint's HTML5 OTT solution allows you to surface a Sourcepoint CMP message
 - [Single page application](#single-page-application)
 - [Global Privacy Platform (GPP) Multi-State Privacy (MSPS) support](#global-privacy-platform-gpp-multi-state-privacy-msps-support)
 - [APIs](#apis)
+- [Device remote control](#device-remote-control)
 
 ## Implementation overview
 
@@ -305,3 +306,33 @@ window._sp_ = {
 ## APIs
 
 Find comprehensive guides and documentation to help you start working with Sourcepoint's public APIs as quickly as possible for different regulatory frameworks in our [API Hub](https://sourcepoint-public-api.readme.io/reference/welcome-to-the-sourcepoint-api-hub).
+
+## Device remote control
+
+Intro text
+
+Intro text
+
+Intro text
+
+- [`navigation.js` file]()
+- [Navigation functions for remote control]()
+- [Implement device remote control]()
+
+### `navigation.js` file
+
+text
+
+text
+
+### Navigation functions for remote control
+
+text
+
+text
+
+### Implement device remote control
+
+Text
+
+Text
