@@ -309,11 +309,7 @@ Find comprehensive guides and documentation to help you start working with Sourc
 
 ## Device remote control
 
-Intro text
-
-Intro text
-
-Intro text
+In the following sections we will cover how to configure and implement a remote control for your OTT device.
 
 - [`navigation.js` file]()
 - [Navigation functions for remote control]()
@@ -321,18 +317,27 @@ Intro text
 
 ### `navigation.js` file
 
-text
-
-text
+Remote control configuration can be included in an external `navigation.js` file for your project. Each example project folder included in this repository (Tizen and webOS) includes a `navigation.js` file with pre-built button mapping using the available navigation functions.
 
 ### Navigation functions for remote control
 
-text
+The following methods are available to use in the `navigation.js` file to configure the remote control:
 
-text
+| **Method**          | **Description**                                         |
+| ------------------- | ------------------------------------------------------- |
+| `onLoad`            | Runs on startup, trigger `registerKey` and `bindEvents` |
+| `getViewportWindow` | Get window object of an iframe                          |
+| `getActiveElement`  | Get an active element of the document                   |
+| `triggerClick`      | Handle event when Enter button is pressed               |
+| `registerKey`       | Register a button of a remote control by key name       |
+| `unregisterKey`     | Unregister a button of a remote control by key name     |
+| `onKeyDown`         | Handle event when a key is pressed                      |
+| `bindEvents`        | Add event listener from a remote control                |
 
 ### Implement device remote control
 
-Text
+Once you have configured the methods needed for the device remote control either include the configurations in your `index.html` file using `<script>` tags or refer to the `navigation.js` file
 
-Text
+```javascript
+<script src="navigation.js"></script>
+```
