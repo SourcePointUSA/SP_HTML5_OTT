@@ -226,7 +226,7 @@ Attach the `loadNativeOtt` function to an event handler on your project. Most or
 
 ## Single page application
 
-When implementing a single page application, you should include the `isSPA` parameter in your client configuration script and set the value to `true`.
+Configuring your project as a single page application provides you with greater control over surfacing and dismissing your message. When implementing a single page application, you should include the `isSPA` parameter in your client configuration script and set the value to `true`.
 
 ```javascript
 //Example
@@ -311,9 +311,10 @@ Find comprehensive guides and documentation to help you start working with Sourc
 
 In the following sections we will cover how to configure and implement a remote control for your OTT device.
 
-- [`navigation.js` file]()
-- [Navigation functions for remote control]()
-- [Implement device remote control]()
+- [`navigation.js` file](#navigationjs-file)
+- [Navigation functions for remote control](#navigation-functions-for-remote-control)
+- [Implement device remote control](#implement-device-remote-control)
+- [Close message on Back button selection](#close-message-on-back-button-selection)
 
 ### `navigation.js` file
 
@@ -341,3 +342,11 @@ Once you have configured the methods needed for the device remote control either
 ```javascript
 <script src="navigation.js"></script>
 ```
+
+### Close message on Back button selection
+
+To close a message whenever an end-user presses the **Back button** on their device's remote, you will need to implement your project as [single page application](#single-page-application) since this gives you better control over the visibility of your message.
+
+Once your project is implemented as a single page application you will have access to the `window._sp_.destroyMessages();` function which can be used to dismiss messages.
+
+Tie the `window._sp_.destroyMessages();` function to JavaScript's native event listener methods to close the message whenever the **Back button** is pressed by the end-user.
