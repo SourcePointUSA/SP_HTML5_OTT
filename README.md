@@ -9,6 +9,7 @@ Sourcepoint's HTML5 OTT solution allows you to surface a Sourcepoint CMP message
 - [Event callbacks](#event-callbacks)
 - [Resurface OTT message](#resurface-ott-message)
 - [Single page application](#single-page-application)
+- [Message language controls](#message-language-controls)
 - [Global Privacy Platform (GPP) Multi-State Privacy (MSPS) support](#global-privacy-platform-gpp-multi-state-privacy-msps-support)
 - [APIs](#apis)
 - [Device remote control](#device-remote-control)
@@ -247,6 +248,28 @@ Including the `isSPA` parameter will confirm the implementation for a single pag
 | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `window._sp_.executeMessaging();` | Trigger the function in order to surface a message on a single page application. This function should be called on each (virtual) pageload.<br><br>:notebook: **Note**: A message will only surface if your configured scenario dictates that a message should appear. |
 | `window._sp_.destroyMessages();`  | Trigger the function to dismiss all messages.                                                                                                                                                                                                                          |
+
+## Message language controls
+
+By default, your message will be delivered using the language set as **Default** in the message builder. If you wish to show your message in any other language other than your configured **Default** language you can:
+
+- configure the appropriate translations for the message components and vendor list components in your selected language.
+- include the `consentLanguage` parameter in your client configuration script and set the value of the parameter to the [two-letter ISO 639-1 language code](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes).
+
+```javascript
+window._sp_queue = [];
+window._sp_ = {
+    config: {
+        accountId: 1584,
+        baseEndpoint: 'https://cdn.privacy-mgmt.com',
+        gdpr: { },
+        propertyHref: 'https://www.testdemo.com',
+        consentLanguage: 'de' //message will be shown using German translation
+        isSPA: true
+...
+```
+
+> **Note**: Currently, there is no way to detect the language of an end-user's device and dynamically surface the corresponding message translation in Sourcepoint's HTML5 solution.
 
 ## Global Privacy Platform (GPP) Multi-State Privacy (MSPS) support
 
