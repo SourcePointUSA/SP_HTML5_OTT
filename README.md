@@ -269,7 +269,7 @@ window._sp_ = {
 ...
 ```
 
-> **Note**: Currently, there is no way to detect the language of an end-user's device and dynamically surface the corresponding message translation in Sourcepoint's HTML5 solution.
+> :notebook: **Note**: Currently, there is no way to detect the language of an end-user's device and dynamically surface the corresponding message translation in Sourcepoint's HTML5 solution.
 
 ## Global Privacy Platform (GPP) Multi-State Privacy (MSPS) support
 
