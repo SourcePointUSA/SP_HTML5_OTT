@@ -264,7 +264,7 @@ window._sp_ = {
         baseEndpoint: 'https://cdn.privacy-mgmt.com',
         gdpr: { },
         propertyHref: 'https://www.testdemo.com',
-        consentLanguage: 'de' //message will be shown using German translation
+        consentLanguage: 'de', //message will be shown using German translation
         isSPA: true
 ...
 ```
