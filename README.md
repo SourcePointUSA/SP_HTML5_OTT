@@ -332,39 +332,19 @@ Find comprehensive guides and documentation to help you start working with Sourc
 
 ## Device remote control
 
-In the following sections we will cover how to configure and implement a remote control for your OTT device.
+In the following sections we will cover how remote control key bindings are implemented in the solution and customizations your organization way want to utilize.
 
 - [`navigation.js` file](#navigationjs-file)
-- [Navigation functions for remote control](#navigation-functions-for-remote-control)
-- [Implement device remote control](#implement-device-remote-control)
+- [`main.js` file](#mainjs-file)
 - [Close message on Back button selection](#close-message-on-back-button-selection)
 
 ### `navigation.js` file
 
-Remote control configuration can be included in an external `navigation.js` file for your project. Each example project folder included in this repository (Tizen and webOS) includes a `navigation.js` file with pre-built button mapping using the available navigation functions.
+Remote control key bindings can be included in an external `navigation.js` file for your project. Each example project folder included in this repository ([Tizen](/tizen-example/js/navigation.js) and [webOS](/webOS-example/js/navigation.js)) includes a `navigation.js` file with pre-built key bindings.
 
-### Navigation functions for remote control
+### `main.js` file
 
-The following methods are available to use in the `navigation.js` file to configure the remote control:
-
-| **Method**          | **Description**                                         |
-| ------------------- | ------------------------------------------------------- |
-| `onLoad`            | Runs on startup, trigger `registerKey` and `bindEvents` |
-| `getViewportWindow` | Get window object of an iframe                          |
-| `getActiveElement`  | Get an active element of the document                   |
-| `triggerClick`      | Handle event when Enter button is pressed               |
-| `registerKey`       | Register a button of a remote control by key name       |
-| `unregisterKey`     | Unregister a button of a remote control by key name     |
-| `onKeyDown`         | Handle event when a key is pressed                      |
-| `bindEvents`        | Add event listener from a remote control                |
-
-### Implement device remote control
-
-Once you have configured the methods needed for the device remote control either include the configurations in your `index.html` file using `<script>` tags or refer to the `navigation.js` file
-
-```javascript
-<script src="navigation.js"></script>
-```
+Each example project folder in this repository ([Tizen](/tizen-example/js/main.js) and [webOS](/webOS-example/js/main.js)) includes a `main.js` file that is used to initialize the key binding defined in the `navigation.js` when the window loads.
 
 ### Close message on Back button selection
 
