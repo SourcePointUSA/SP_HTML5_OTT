@@ -1,18 +1,29 @@
 <img src="/images/logo.png" width=25%>
 
-Sourcepoint's HTML5 OTT solution allows you to surface a Sourcepoint CMP message on devices such as Tizen and webOS for supported regulatory frameworks.
+Sourcepoint's HTML5 OTT solution allows you to surface a Sourcepoint CMP message on devices such as Tizen, webOS, and HbbTV for supported regulatory frameworks.
 
 # Table of Contents
 
-- [Implementation overview](#implementation-overview)
-- [Optional configuration parameters](#optional-configuration-parameters)
-- [Event callbacks](#event-callbacks)
-- [Resurface OTT message](#resurface-ott-message)
-- [Single page application](#single-page-application)
-- [Message language controls](#message-language-controls)
-- [Global Privacy Platform (GPP) Multi-State Privacy (MSPS) support](#global-privacy-platform-gpp-multi-state-privacy-msps-support)
-- [APIs](#apis)
-- [Device remote control](#device-remote-control)
+- [Table of Contents](#table-of-contents)
+  - [Implementation overview](#implementation-overview)
+    - [Stub file(s)](#stub-files)
+    - [Client configuration script](#client-configuration-script)
+    - [URL to messaging library](#url-to-messaging-library)
+  - [Optional configuration parameters](#optional-configuration-parameters)
+    - [Overall optional client configuration parameters](#overall-optional-client-configuration-parameters)
+    - [GDPR campaign optional client configuration parameters](#gdpr-campaign-optional-client-configuration-parameters)
+    - [U.S. Privacy (Legacy) optional client configuration parameters](#us-privacy-legacy-optional-client-configuration-parameters)
+  - [Event callbacks](#event-callbacks)
+  - [Resurface OTT message](#resurface-ott-message)
+  - [Single page application](#single-page-application)
+  - [HbbTV Support](#hbbtv-support)
+  - [Message language controls](#message-language-controls)
+  - [Global Privacy Platform (GPP) Multi-State Privacy (MSPS) support](#global-privacy-platform-gpp-multi-state-privacy-msps-support)
+  - [APIs](#apis)
+  - [Device remote control](#device-remote-control)
+    - [`navigation.js` file](#navigationjs-file)
+    - [`main.js` file](#mainjs-file)
+    - [Close message on Back button selection](#close-message-on-back-button-selection)
 
 ## Implementation overview
 
@@ -104,6 +115,7 @@ The following parameters can be added to your client configuration script to imp
 | `authId`               |               | Allows your organization to pass a consent identifier to Sourcepoint to be used with authenticated consent. [Click here](https://docs.sourcepoint.com/hc/en-us/articles/4403274791699-Authenticated-consent) to learn more.                                                                                                                                                                                                                             |
 | `authCookie`           | String        | Allows your organization to configure a unique name for Sourcepoint's `authId` cookie. [Click here](https://docs.sourcepoint.com/hc/en-us/articles/4403274791699-Authenticated-consent) for more information on `authId`.                                                                                                                                                                                                                               |
 | `campaignEnv`          | String        | Designates which campaign environment to use and accepts either `stage` or `prod`.<br><br>When set to `stage`, the implementation will default to campaigns configured in your stage campaign environment. When set to `prod`, the implementation will default to campaigns configured in your public campaign environment.<br><br>:notebook: **Note**: This parameter defaults to your `prod` campaign environment unless otherwise indicated.         |
+| `hbbTvSupport`         | Boolean       | When set to `true`, will enable support for HBBTV devices.                                                                                                                                                                                                                                                                                                                                                                                              |
 | `isSPA`                | Boolean       | When set to `true`, will confirm the implementation for a single page application and will show a message only when `window._sp_.executeMessaging();` is triggered.<br><br>[Click here](#single-page-application) to learn more about single page application functions.                                                                                                                                                                                |
 | `joinHref`             | Boolean       | When set to `true`, will ensure that all directory regular expression functionality works in conjunction with the propertyHref parameter.<br><br>The `joinHref` parameter is solely used to test your implementation across different servers while still allowing for URL RegEx matching. For these reasons, Sourcepoint strongly recommends that `joinHref` is set to `true` to ensure full CMP functionality.                                        |
 | `targetingParams`      | Object        | Targeting params allow a developer to set arbitrary key/value pairs. These key/value pairs are sent to Sourcepoint servers where they can be used to take a decision within the scenario builder. [Click here](https://docs.sourcepoint.com/hc/en-us/articles/4404822445587-Key-value-pair-targeting) to learn more.<br><br>:notebook: **Note**: `targetingParams`set within the U.S. Privacy (Legacy) or GDPR object will override this configuration. |
@@ -254,6 +266,26 @@ Including the `isSPA` parameter will confirm the implementation for a single pag
 | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `window._sp_.executeMessaging();` | Trigger the function in order to surface a message on a single page application. This function should be called on each (virtual) pageload.<br><br>:notebook: **Note**: A message will only surface if your configured scenario dictates that a message should appear. |
 | `window._sp_.destroyMessages();`  | Trigger the function to dismiss all messages.                                                                                                                                                                                                                          |
+
+## HbbTV Support
+
+When implementing Sourcepoint's HTML5 OTT solution on HbbTV devices, your organization will need to include the `hbbTvSupport` property in your client configuration script and set the value to `true` to enable support on these devices.
+
+```javascript
+<script type="text/javascript">
+  window._sp_queue = [];
+  window._sp_ = {
+      config: {
+          accountId: 22,
+          baseEndpoint: 'https://cdn.privacy-mgmt.com',
+          isOTT: true,
+          hbbTvSupport: true,
+          propertyHref: 'https://hbbtvapp',
+          gdpr: { }
+      }
+}
+</script>
+```
 
 ## Message language controls
 
