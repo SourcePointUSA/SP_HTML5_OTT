@@ -225,22 +225,20 @@ The privacy manager JavaScript code is a snippet that is added to your project a
 Load the OTT message on demand by [retrieving the OTT message ID](https://docs.sourcepoint.com/hc/en-us/articles/20806618675603-Resurface-OTT-message) from the Sourcepoint portal and pass it to the `loadNativeOtt` function.
 
 ```javascript
-//GDPR
+//GDPR - OTT
 window._sp_.gdpr.loadNativeOtt(GDPR_OTT_ID);
 
-//U.S. Privacy (Legacy)
-window._sp_.ccpa.loadNativeOtt(USP_LEGACY_OTT_ID);
+//GDPR - Legacy OTT
+window._sp_.gdpr.loadPrivacyManagerOtt(GDPR_LEGACY_OTT_ID);
+
+//U.S. Privacy (Legacy) - OTT
+window._sp_.ccpa.loadNativeOtt(USP_OTT_ID);
+
+//U.S. Privacy (Legacy) - Legacy OTT
+window._sp_.ccpa.loadPrivacyManagerOtt(USP_LEGACY_OTT_ID);
 ```
 
 Attach the `loadNativeOtt` function to an event handler on your project. Most organizations who implement this function will attach it to `onclick` event of an element.
-
-```javascript
-//GDPR
-<button onclick="window._sp_.gdpr.loadNativeOtt(123456)">OTT GDPR</button>
-
-//U.S. Privacy (Legacy)
-<button onclick="window._sp_.ccpa.loadNativeOtt(987654)">OTT USP Legacy</button>
-```
 
 ## Single page application
 
