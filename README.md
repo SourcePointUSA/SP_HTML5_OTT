@@ -148,7 +148,6 @@ The following parameters can be added to the `gdpr: {}` object in your client co
 | **Optional Parameter**       | **Data Type** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | ---------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `consentLanguage`            | String        | Ensure that the purposes or stack names listed in a consent message remain in the same language regardless of an end-user's browser language setting. [Click here](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) for a list of ISO 639-1 language codes.<br><br>If this parameter is absent, the stacks and purposes will appear according the user's preferred language.                                                |
-| `groupPmId`                  | Number        | Allows your organization to use the privacy manager ID for the property group's privacy manager.<br><br>:notebook: **Note**: Call `window._sp_.gdpr.loadPrivacyManagerModal()` without passing a parameter and the privacy manager that displays will be that property's version of the `groupPmId` privacy manager.                                                                                                                     |
 | `shortCircuitPartialConsent` | Boolean       | When set to `true` will eliminate an extra network call when the end-user has at least partial consent.<br><br>:notebook: **Note**: When this parameter is set to `true`, an end-user will not receive a new message until their consent expires. Re-consent scenario steps will not be possible.                                                                                                                                        |
 | `targetingParams`            | Object        | Targeting params allow a developer to set arbitrary key/value pairs. These key/value pairs are sent to Sourcepoint servers where they can be used to take a decision within the scenario builder. [Click here](https://docs.sourcepoint.com/hc/en-us/articles/4404822445587-Key-value-pair-targeting) to learn more.<br><br>:notebook: **Note**: `targetingParams` set within the `ccpa` object will override overall `targetingParams`. |
 
@@ -163,7 +162,6 @@ window._sp_ = {
         propertyHref: 'https://www.demotest.com',
         isOTT: true,
         gdpr: {
-            groupPmId: 123456,
             consentLanguage: "fi",
             targetingParams:{
                 darkmode: false
@@ -220,9 +218,9 @@ Sourcepoint provides 10 different event callbacks that can be utilized by your o
 
 ## Resurface OTT message
 
-The privacy manager JavaScript code is a snippet that is added to your project and allows an end-user to resurface a privacy manager. Using this link/button, end-users can directly manage their consent preferences on an ongoing basis without having to re-encounter your organization's first layer message.
+The resurface OTT message JavaScript code is a snippet that is added to your project and allows an end-user to resurface an OTT message. Using this link/button, end-users can directly manage their consent preferences on an ongoing basis.
 
-Load the OTT message on demand by [retrieving the OTT message ID](https://docs.sourcepoint.com/hc/en-us/articles/20806618675603-Resurface-OTT-message) from the Sourcepoint portal and pass it to the `loadNativeOtt` function.
+Load the OTT message on demand by [retrieving the OTT message ID](https://docs.sourcepoint.com/hc/en-us/articles/20806618675603-Resurface-OTT-message) from the Sourcepoint portal and pass it to the appropriate function.
 
 ```javascript
 //GDPR - OTT
@@ -238,7 +236,7 @@ window._sp_.ccpa.loadNativeOtt(USP_OTT_ID);
 window._sp_.ccpa.loadPrivacyManagerOtt(USP_LEGACY_OTT_ID);
 ```
 
-Attach the `loadNativeOtt` function to an event handler on your project. Most organizations who implement this function will attach it to `onclick` event of an element.
+Attach the function to an event handler on your project. Most organizations who implement this function will attach it to `onclick` event of an element.
 
 ## Single page application
 
