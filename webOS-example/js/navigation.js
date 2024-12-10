@@ -85,10 +85,12 @@ Navigation.prototype = {
      */
     onKeyDown: function(event) {
         if (event.keyCode === tileNavigation.tvKey.KEY_BACK || event.keyCode === tileNavigation.tvKey.KEY_BACK_KEYBOARD) {
+            console.log('getting back button')
             var backButton = tileNavigation.getBackButton();
             if (backButton){
                 backButton.focus();
                 tileNavigation.triggerClick(backButton);
+                console.log('back button clicked')
             } else {
                 webOS.platformBack();
             }
