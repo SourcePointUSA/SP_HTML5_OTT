@@ -12,6 +12,7 @@ function Navigation (options) {
 
 Navigation.prototype = {
     onLoad: function () {
+        console.log('LOADING')
         try{
             webOS.fetchAppInfo(function (info) {
                 console.log('Widget version: ', info.version);
@@ -49,19 +50,19 @@ Navigation.prototype = {
     getActiveElement: function (element) {
         if (typeof(element) === "undefined") { element = document.activeElement; }
         const shadowRoot = element.shadowRoot;
-        const contentDocument = element.contentDocument;
+        const contentWindow = element.contentWindow;
         if (shadowRoot && shadowRoot.activeElement) {
             return this.getActiveElement(shadowRoot.activeElement);
         }
-        if (contentDocument && contentDocument.activeElement) {
-            return this.getActiveElement(contentDocument.activeElement);
+        if (contentWindow && contentWindow.activeElement) {
+            return this.getActiveElement(contentWindow.activeElement);
         }
         return element;
     },
     getBackButton: function (){
         var iframeWindow = tileNavigation.getViewportWindow(),
-            backButtonCollection = iframeWindow.contentDocument.body.querySelectorAll('div.message-component.message-button'),
-            returnButtonCollection = iframeWindow.contentDocument.body.querySelectorAll('div.back-button.focusable');
+            backButtonCollection = iframeWindow.contentWindow.body.querySelectorAll('div.message-component.message-button'),
+            returnButtonCollection = iframeWindow.contentWindow.body.querySelectorAll('button.back-button.focusable');
         return !!backButtonCollection.length ? backButtonCollection[0] : !!returnButtonCollection.length ? returnButtonCollection[0] : null;
     },
     /**
@@ -88,6 +89,7 @@ Navigation.prototype = {
             console.log('getting back button')
             var backButton = tileNavigation.getBackButton();
             if (backButton){
+                ('back button clicked!')
                 backButton.focus();
                 tileNavigation.triggerClick(backButton);
                 console.log('back button clicked')
@@ -104,8 +106,8 @@ Navigation.prototype = {
         window.setTimeout(function() {
             var iframeWindow = tileNavigation.getViewportWindow();
             if (!!iframeWindow){
-                iframeWindow.contentDocument.body.addEventListener('keydown', that.onKeyDown);
-                iframeWindow.contentDocument.body.addEventListener('click', that.onClick);
+                iframeWindow.contentWindow.body.addEventListener('keydown', that.onKeyDown);
+                iframeWindow.contentWindow.body.addEventListener('click', that.onClick);
             }
         }, 3000);
     }
