@@ -213,6 +213,7 @@ Sourcepoint provides 10 different event callbacks that can be utilized by your o
 - `onMessageReceiveData`
 - `onSPPMObjectReady`
 - `onError`
+- `onUserMessageInteraction`
 
 [Click here](https://docs.sourcepoint.com/hc/en-us/articles/4405397484307-Event-callbacks) to find comprehensive information on these event callbacks.
 
